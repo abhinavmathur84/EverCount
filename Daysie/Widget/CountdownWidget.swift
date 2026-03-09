@@ -21,10 +21,7 @@ struct CountdownProvider: TimelineProvider {
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<CountdownEntry>) -> Void) {
-        // Try to load the next event from SwiftData
         let entry = loadNextEvent() ?? CountdownEntry(date: Date(), eventName: "No Events", eventEmoji: "📅", daysLeft: 0, eventColor: .blue)
-
-        // Refresh daily
         let nextUpdate = Calendar.current.startOfDay(for: Calendar.current.date(byAdding: .day, value: 1, to: Date())!)
         let timeline = Timeline(entries: [entry], policy: .after(nextUpdate))
         completion(timeline)
@@ -37,9 +34,7 @@ struct CountdownProvider: TimelineProvider {
             let container = try ModelContainer(for: schema, configurations: [modelConfiguration])
             let context = ModelContext(container)
 
-            let descriptor = FetchDescriptor<CountdownEvent>(
-                sortBy: [SortDescriptor(\.date)]
-            )
+            let descriptor = FetchDescriptor<CountdownEvent>(sortBy: [SortDescriptor(\.date)])
             let events = try context.fetch(descriptor)
 
             guard let nextEvent = events.first(where: { !DateHelper.isPast(date: $0.date) }) else {
@@ -80,29 +75,39 @@ struct SmallWidgetView: View {
     let entry: CountdownEntry
 
     var body: some View {
-        ZStack {
-            // ensure the background fills the entire widget area
-            entry.eventColor
-                .ignoresSafeArea()
+        VStack(spacing: 4) {
+            Text(entry.eventEmoji)
+                .font(.system(size: 30))
 
-            VStack(spacing: 4) {
-                Text(entry.eventEmoji)
-                    .font(.system(size: 28))
-                Text(entry.eventName)
-                    .font(.headline)
-                    .foregroundColor(.white)
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.7)
-                Text(entry.daysLeft == 0 ? "Today!" : "\(entry.daysLeft) days")
-                    .font(.title3.bold())
-                    .foregroundColor(.white)
+            Text(entry.daysLeft == 0 ? "Today!" : "\(entry.daysLeft)")
+                .font(.system(size: 38, weight: .black, design: .rounded))
+                .foregroundStyle(.white)
+                .monospacedDigit()
+                .minimumScaleFactor(0.6)
+
+            if entry.daysLeft != 0 {
+                Text("days left")
+                    .font(.system(size: 10, weight: .semibold, design: .rounded))
+                    .foregroundStyle(.white.opacity(0.82))
+                    .textCase(.uppercase)
+                    .tracking(0.6)
             }
-            .padding(8)
+
+            Text(entry.eventName)
+                .font(.system(.caption2, design: .rounded, weight: .medium))
+                .foregroundStyle(.white.opacity(0.9))
+                .lineLimit(1)
+                .minimumScaleFactor(0.7)
+                .padding(.top, 2)
         }
-        // make the stack take up all available space so that the color
-        // truly covers the widget, avoiding black bars at the edges
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .containerBackground(entry.eventColor, for: .widget)
+        .containerBackground(
+            LinearGradient(
+                colors: [entry.eventColor, entry.eventColor.opacity(0.72)],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            ),
+            for: .widget
+        )
     }
 }
 
@@ -110,34 +115,57 @@ struct MediumWidgetView: View {
     let entry: CountdownEntry
 
     var body: some View {
-        HStack {
-            VStack(alignment: .leading, spacing: 5) {
+        HStack(spacing: 12) {
+            // Left: emoji + name
+            VStack(alignment: .leading, spacing: 6) {
                 Text(entry.eventEmoji)
-                    .font(.system(size: 32))
+                    .font(.system(size: 34))
+
+                Spacer()
+
                 Text(entry.eventName)
-                    .font(.title3.bold())
-                    .foregroundColor(.white)
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.7)
-                Text("Next countdown")
-                    .font(.caption)
-                    .foregroundColor(.white.opacity(0.8))
+                    .font(.system(.subheadline, design: .rounded, weight: .bold))
+                    .foregroundStyle(.white)
+                    .lineLimit(2)
+                    .minimumScaleFactor(0.8)
+
+                Text("upcoming")
+                    .font(.system(.caption2, design: .rounded, weight: .medium))
+                    .foregroundStyle(.white.opacity(0.72))
+                    .textCase(.uppercase)
+                    .tracking(0.6)
             }
 
             Spacer()
 
-            VStack(spacing: 4) {
-                Text("\(entry.daysLeft)")
-                    .font(.system(size: 40, weight: .bold, design: .rounded))
-                    .foregroundColor(.white)
+            // Right: days badge
+            VStack(spacing: 3) {
+                Text(entry.daysLeft == 0 ? "🎉" : "\(entry.daysLeft)")
+                    .font(.system(size: 42, weight: .black, design: .rounded))
+                    .foregroundStyle(.white)
+                    .monospacedDigit()
+                    .minimumScaleFactor(0.6)
+
                 Text(entry.daysLeft == 0 ? "Today!" : "days left")
-                    .font(.subheadline)
-                    .foregroundColor(.white.opacity(0.8))
+                    .font(.system(size: 11, weight: .semibold, design: .rounded))
+                    .foregroundStyle(.white.opacity(0.85))
+                    .textCase(.uppercase)
+                    .tracking(0.5)
             }
+            .frame(minWidth: 80)
+            .padding(.vertical, 10)
+            .padding(.horizontal, 12)
+            .background(.black.opacity(0.14))
+            .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
         }
-        .padding(10)
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .containerBackground(entry.eventColor, for: .widget)
+        .containerBackground(
+            LinearGradient(
+                colors: [entry.eventColor, entry.eventColor.opacity(0.72)],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            ),
+            for: .widget
+        )
     }
 }
 

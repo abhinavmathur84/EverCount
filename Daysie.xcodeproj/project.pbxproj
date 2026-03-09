@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA11BB22CC33DD44EE55FF66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA11BB22CC33DD44EE551234 /* Assets.xcassets */; };
 		09CCE7E2177368FB904D693B /* BannerAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9922FC33CF8F3D036A855431 /* BannerAdView.swift */; };
 		0C80FA060484DCD50B491456 /* EventCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14652686EB4FCE95B1C8C3A1 /* EventCardView.swift */; };
 		3BC57F555B7E7646B7E25AD1 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = A1B9D06FFCA6914E1C1548B0 /* GoogleMobileAds */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AA11BB22CC33DD44EE551234 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		14652686EB4FCE95B1C8C3A1 /* EventCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCardView.swift; sourceTree = "<group>"; };
 		3E5FA11578B78690E47369C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		44D41731F5A5819235408BF1 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
@@ -52,6 +54,17 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AA11BB22CC33DD44EE55AAAA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA11BB22CC33DD44EE55FF66 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXGroup section */
 		04E5162FC6E719DDDB1B4D75 /* Helpers */ = {
@@ -106,6 +119,7 @@
 			children = (
 				AEE202D569FB05607A627521 /* DaysieApp.swift */,
 				3E5FA11578B78690E47369C7 /* Info.plist */,
+				AA11BB22CC33DD44EE551234 /* Assets.xcassets */,
 				04E5162FC6E719DDDB1B4D75 /* Helpers */,
 				99B7C332A6E53EBCF530E455 /* Models */,
 				276C03272A59A7D4C4B31F82 /* ViewModels */,
@@ -156,6 +170,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A4758A0DE9BAA71425FF7D27 /* Build configuration list for PBXNativeTarget "Daysie" */;
 			buildPhases = (
+				AA11BB22CC33DD44EE55AAAA /* Resources */,
 				C4961E54809A37EAD2B17727 /* Sources */,
 				DB46C5F398334D090706974F /* Frameworks */,
 			);
