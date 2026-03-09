@@ -148,7 +148,7 @@ struct EventDetailView: View {
             }
             .padding(.vertical, 16)
         }
-        .background(Color(.systemGroupedBackground))
+        .background(Color(.systemGroupedBackground).ignoresSafeArea())
         .navigationTitle(event.name)
         .navigationBarTitleDisplayMode(.inline)
         .onReceive(timer) { time in

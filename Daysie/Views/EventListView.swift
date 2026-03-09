@@ -20,11 +20,7 @@ struct EventListView: View {
 
     var body: some View {
         NavigationStack {
-            ZStack {
-                Color(.systemGroupedBackground)
-                    .ignoresSafeArea()
-
-                VStack(spacing: 0) {
+            VStack(spacing: 0) {
                     // Tag filter bar
                     if !allTags.isEmpty {
                         ScrollView(.horizontal, showsIndicators: false) {
@@ -139,7 +135,6 @@ struct EventListView: View {
                     // Banner ad
                     AdaptiveBannerAdView()
                         .frame(height: 60)
-                }
             }
             .navigationTitle("Daysie")
             .navigationBarTitleDisplayMode(.large)
@@ -173,6 +168,7 @@ struct EventListView: View {
             }
             .searchable(text: $viewModel.searchText, prompt: "Search events")
         }
+        .background(Color(.systemGroupedBackground).ignoresSafeArea())
         .environmentObject(interstitialHelper)
     }
 
