@@ -4,7 +4,6 @@ import SwiftData
 struct AddEditEventView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
-    @EnvironmentObject var interstitialHelper: InterstitialAdHelper
 
     var existingEvent: CountdownEvent? = nil
 
@@ -253,7 +252,6 @@ struct AddEditEventView: View {
             )
             modelContext.insert(newEvent)
             NotificationHelper.scheduleNotifications(for: newEvent)
-            interstitialHelper.recordSaveAndShowIfNeeded()
         }
 
         dismiss()

@@ -142,9 +142,7 @@ struct EventDetailView: View {
                 }
                 .padding(.horizontal)
 
-                AdaptiveBannerAdView()
-                    .frame(height: 60)
-                    .padding(.top, 4)
+
             }
             .padding(.vertical, 16)
         }

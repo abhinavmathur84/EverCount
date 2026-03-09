@@ -1,13 +1,8 @@
 import SwiftUI
 import SwiftData
-import GoogleMobileAds
 
 @main
 struct DaysieApp: App {
-    init() {
-        GADMobileAds.sharedInstance().start(completionHandler: nil)
-    }
-
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([CountdownEvent.self])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)

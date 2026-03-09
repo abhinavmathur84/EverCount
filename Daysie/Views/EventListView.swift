@@ -5,7 +5,6 @@ struct EventListView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var allEvents: [CountdownEvent]
     @StateObject private var viewModel = EventsViewModel()
-    @StateObject private var interstitialHelper = InterstitialAdHelper()
     @State private var showingAddEvent = false
     @State private var eventToEdit: CountdownEvent? = nil
     @Environment(\.colorScheme) var colorScheme
@@ -132,9 +131,6 @@ struct EventListView: View {
                     .scrollContentBackground(.hidden)
                     .animation(.easeInOut, value: allEvents.count)
 
-                    // Banner ad
-                    AdaptiveBannerAdView()
-                        .frame(height: 60)
             }
             .navigationTitle("Daysie")
             .navigationBarTitleDisplayMode(.large)
@@ -160,15 +156,12 @@ struct EventListView: View {
             }
             .sheet(isPresented: $showingAddEvent) {
                 AddEditEventView()
-                    .environmentObject(interstitialHelper)
             }
             .sheet(item: $eventToEdit) { event in
                 AddEditEventView(existingEvent: event)
-                    .environmentObject(interstitialHelper)
             }
             .searchable(text: $viewModel.searchText, prompt: "Search events")
         }
-        .environmentObject(interstitialHelper)
     }
 
     private func deleteEvent(_ event: CountdownEvent) {
