@@ -168,7 +168,6 @@ struct EventListView: View {
             }
             .searchable(text: $viewModel.searchText, prompt: "Search events")
         }
-        .background(Color(.systemGroupedBackground).ignoresSafeArea())
         .environmentObject(interstitialHelper)
     }
 

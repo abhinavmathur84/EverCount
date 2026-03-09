@@ -91,6 +91,7 @@ struct DaysieApp: App {
     var body: some Scene {
         WindowGroup {
             EventListView()
+                .background(Color(.systemGroupedBackground).ignoresSafeArea())
         }
         .modelContainer(sharedModelContainer)
     }
