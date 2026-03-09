@@ -81,20 +81,27 @@ struct SmallWidgetView: View {
 
     var body: some View {
         ZStack {
+            // ensure the background fills the entire widget area
             entry.eventColor
-            VStack(spacing: 6) {
+                .ignoresSafeArea()
+
+            VStack(spacing: 4) {
                 Text(entry.eventEmoji)
-                    .font(.system(size: 32))
+                    .font(.system(size: 28))
                 Text(entry.eventName)
                     .font(.headline)
                     .foregroundColor(.white)
                     .lineLimit(1)
+                    .minimumScaleFactor(0.7)
                 Text(entry.daysLeft == 0 ? "Today!" : "\(entry.daysLeft) days")
-                    .font(.title2.bold())
+                    .font(.title3.bold())
                     .foregroundColor(.white)
             }
-            .padding()
+            .padding(8)
         }
+        // make the stack take up all available space so that the color
+        // truly covers the widget, avoiding black bars at the edges
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .containerBackground(entry.eventColor, for: .widget)
     }
 }
@@ -104,13 +111,14 @@ struct MediumWidgetView: View {
 
     var body: some View {
         HStack {
-            VStack(alignment: .leading, spacing: 6) {
+            VStack(alignment: .leading, spacing: 5) {
                 Text(entry.eventEmoji)
-                    .font(.system(size: 40))
+                    .font(.system(size: 32))
                 Text(entry.eventName)
                     .font(.title3.bold())
                     .foregroundColor(.white)
                     .lineLimit(1)
+                    .minimumScaleFactor(0.7)
                 Text("Next countdown")
                     .font(.caption)
                     .foregroundColor(.white.opacity(0.8))
@@ -120,14 +128,15 @@ struct MediumWidgetView: View {
 
             VStack(spacing: 4) {
                 Text("\(entry.daysLeft)")
-                    .font(.system(size: 48, weight: .bold, design: .rounded))
+                    .font(.system(size: 40, weight: .bold, design: .rounded))
                     .foregroundColor(.white)
                 Text(entry.daysLeft == 0 ? "Today!" : "days left")
                     .font(.subheadline)
                     .foregroundColor(.white.opacity(0.8))
             }
         }
-        .padding()
+        .padding(10)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .containerBackground(entry.eventColor, for: .widget)
     }
 }
