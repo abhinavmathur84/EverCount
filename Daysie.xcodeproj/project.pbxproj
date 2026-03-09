@@ -20,9 +20,6 @@
 		9816BF551872167B99332EA6 /* EventsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B68B680372E8779A237265 /* EventsViewModel.swift */; };
 		B6045D1D4091CE0112485AD2 /* AddEditEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D41C6567EF602A91F628B9 /* AddEditEventView.swift */; };
 		B7B87C0B415D2E7C1405B631 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D41731F5A5819235408BF1 /* DateHelper.swift */; };
-		D00F7C7048D2631EDFD4E637 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D41731F5A5819235408BF1 /* DateHelper.swift */; };
-		EF83AF6D80F2668515ED65FE /* CountdownEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E9DAC322F4895B5E45E7E /* CountdownEvent.swift */; };
-		FF8EF96381E94C4ED7C16377 /* CountdownWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = D275212B22D0C60A26EBF1E5 /* CountdownWidget.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,12 +32,10 @@
 		778D35D7BCF042ACB3F2C2E4 /* Daysie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Daysie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		873C3C58C568217DFEC6EC9A /* InterstitialAdHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterstitialAdHelper.swift; sourceTree = "<group>"; };
 		9922FC33CF8F3D036A855431 /* BannerAdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerAdView.swift; sourceTree = "<group>"; };
-		AE5498268BA228941E628790 /* DaysieWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DaysieWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEE202D569FB05607A627521 /* DaysieApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysieApp.swift; sourceTree = "<group>"; };
 		B38B0BC046CBF3D7B77B53C1 /* EventDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailView.swift; sourceTree = "<group>"; };
 		C9D41C6567EF602A91F628B9 /* AddEditEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditEventView.swift; sourceTree = "<group>"; };
 		CE4E9DAC322F4895B5E45E7E /* CountdownEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownEvent.swift; sourceTree = "<group>"; };
-		D275212B22D0C60A26EBF1E5 /* CountdownWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownWidget.swift; sourceTree = "<group>"; };
 		E5B68B680372E8779A237265 /* EventsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -105,15 +100,6 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		AEDC0E1829F43AA299B16594 /* Widget */ = {
-			isa = PBXGroup;
-			children = (
-				D275212B22D0C60A26EBF1E5 /* CountdownWidget.swift */,
-			);
-			name = Widget;
-			path = Daysie/Widget;
-			sourceTree = "<group>";
-		};
 		D1C79F7C5110306E556FE116 /* Daysie */ = {
 			isa = PBXGroup;
 			children = (
@@ -132,7 +118,6 @@
 			isa = PBXGroup;
 			children = (
 				778D35D7BCF042ACB3F2C2E4 /* Daysie.app */,
-				AE5498268BA228941E628790 /* DaysieWidget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -141,7 +126,6 @@
 			isa = PBXGroup;
 			children = (
 				D1C79F7C5110306E556FE116 /* Daysie */,
-				AEDC0E1829F43AA299B16594 /* Widget */,
 				E9B9A375DE1CA70AB512D828 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -149,23 +133,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		32425826B91D08D4B6C05618 /* DaysieWidget */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 24EA7E9ECBF86D23C38B14CF /* Build configuration list for PBXNativeTarget "DaysieWidget" */;
-			buildPhases = (
-				21E93BF6E53EA4CA451D1008 /* Sources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = DaysieWidget;
-			packageProductDependencies = (
-			);
-			productName = DaysieWidget;
-			productReference = AE5498268BA228941E628790 /* DaysieWidget.appex */;
-			productType = "com.apple.product-type.app-extension";
-		};
 		A10821B8842AD6ABCED542F9 /* Daysie */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A4758A0DE9BAA71425FF7D27 /* Build configuration list for PBXNativeTarget "Daysie" */;
@@ -195,10 +162,7 @@
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
-					32425826B91D08D4B6C05618 = {
-						ProvisioningStyle = Automatic;
-					};
-					A10821B8842AD6ABCED542F9 = {
+						A10821B8842AD6ABCED542F9 = {
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -220,22 +184,11 @@
 			projectRoot = "";
 			targets = (
 				A10821B8842AD6ABCED542F9 /* Daysie */,
-				32425826B91D08D4B6C05618 /* DaysieWidget */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		21E93BF6E53EA4CA451D1008 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EF83AF6D80F2668515ED65FE /* CountdownEvent.swift in Sources */,
-				FF8EF96381E94C4ED7C16377 /* CountdownWidget.swift in Sources */,
-				D00F7C7048D2631EDFD4E637 /* DateHelper.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		C4961E54809A37EAD2B17727 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -310,26 +263,6 @@
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
-		459D2ED0ED90718734506B0E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 38MNL72G33;
-				INFOPLIST_FILE = "Daysie/Widget/CountdownWidgetExtension-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = Daysie;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.daysie.app.widget;
-				SDKROOT = iphoneos;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -418,26 +351,6 @@
 			};
 			name = Debug;
 		};
-		8421813393E7226706912029 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 38MNL72G33;
-				INFOPLIST_FILE = "Daysie/Widget/CountdownWidgetExtension-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = Daysie;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.daysie.app.widget;
-				SDKROOT = iphoneos;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
 		E69C14EB3EF8A48CED3BEBFB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -468,15 +381,6 @@
 			buildConfigurations = (
 				57CA712F59049724459A319E /* Debug */,
 				4343C940C53B3472DB01B9F4 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
-		24EA7E9ECBF86D23C38B14CF /* Build configuration list for PBXNativeTarget "DaysieWidget" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				8421813393E7226706912029 /* Debug */,
-				459D2ED0ED90718734506B0E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
