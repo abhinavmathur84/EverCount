@@ -1,0 +1,51 @@
+name: Daysie
+options:
+  bundleIdPrefix: com.daysie
+  deploymentTarget:
+    iOS: "17.0"
+packages:
+  GoogleMobileAds:
+    url: https://github.com/googleads/swift-package-manager-google-mobile-ads
+    from: "11.0.0"
+targets:
+  Daysie:
+    type: application
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - path: Daysie
+        excludes:
+          - "Widget/**"
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.daysie.app
+        SWIFT_VERSION: 5.0
+        INFOPLIST_FILE: Daysie/Info.plist
+        DEVELOPMENT_TEAM: LT86UVZAL7
+        CODE_SIGN_STYLE: Automatic
+    dependencies:
+      - package: GoogleMobileAds
+  DaysieWidget:
+    type: app-extension
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - path: Daysie/Widget
+        excludes:
+          - "*.plist"
+      - path: Daysie/Models
+      - path: Daysie/Helpers
+        excludes:
+          - "NotificationHelper.swift"
+          - "InterstitialAdHelper.swift"
+    info:
+      path: Daysie/Widget/CountdownWidgetExtension-Info.plist
+      properties:
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.widgetkit-extension
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.daysie.app.widget
+        SWIFT_VERSION: 5.0
+        DEVELOPMENT_TEAM: LT86UVZAL7
+        CODE_SIGN_STYLE: Automatic
