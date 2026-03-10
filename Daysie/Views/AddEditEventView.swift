@@ -47,6 +47,21 @@ struct AddEditEventView: View {
     var body: some View {
         NavigationStack {
             Form {
+                // Tracking mode picker — visible immediately at top
+                Section {
+                    Picker("Type", selection: $isDaysSince) {
+                        Text("⏳ Countdown").tag(false)
+                        Text("📆 Days Since").tag(true)
+                    }
+                    .pickerStyle(.segmented)
+                    .padding(.vertical, 4)
+                } footer: {
+                    Text(isDaysSince
+                         ? "Tracks how many days have passed since this date."
+                         : "Counts down the days until this date.")
+                        .font(.system(.caption, design: .rounded))
+                }
+
                 // Event Details
                 Section {
                     HStack(spacing: 12) {
@@ -144,22 +159,17 @@ struct AddEditEventView: View {
                     Text("Color")
                 }
 
-                // Options
-                Section {
-                    Toggle("Track Days Since", isOn: $isDaysSince)
-                    if !isDaysSince {
+                // Options (only shown for countdown events)
+                if !isDaysSince {
+                    Section {
                         Picker("Repeat", selection: $repeatOption) {
                             ForEach(RepeatOption.allCases, id: \.self) { option in
                                 Text(option.rawValue).tag(option)
                             }
                         }
                         Toggle("Working Days Only", isOn: $workingDaysOnly)
-                    }
-                } header: {
-                    Text("Options")
-                } footer: {
-                    if isDaysSince {
-                        Text("Shows how many days have passed since this date.")
+                    } header: {
+                        Text("Options")
                     }
                 }
 
