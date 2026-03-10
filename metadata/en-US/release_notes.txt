@@ -1,0 +1,8 @@
+Welcome to EverCount!
+
+• Count down to any upcoming event — birthdays, holidays, trips, deadlines
+• Track "Days Since" for milestones that grow over time
+• Home Screen widgets (small & medium) powered by WidgetKit
+• Beautiful gradient cards with emoji and colour customisation
+• Working days mode, repeat options, and reminder notifications
+• Search and tag filtering

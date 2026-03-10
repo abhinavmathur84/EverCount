@@ -29,7 +29,7 @@ struct EventListView: View {
                     .frame(height: 50)
                     .background(Color(.secondarySystemGroupedBackground))
             }
-            .navigationTitle("Daysie")
+            .navigationTitle("EverCount")
             .navigationBarTitleDisplayMode(.large)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {

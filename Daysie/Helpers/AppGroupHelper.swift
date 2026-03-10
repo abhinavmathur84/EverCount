@@ -11,7 +11,7 @@ struct SharedEvent: Codable {
 }
 
 struct AppGroupHelper {
-    static let appGroupID = "group.com.daysie.app"
+    static let appGroupID = "group.com.evercount.app"
     static let eventsKey = "shared_events"
 
     static func saveEvents(_ events: [CountdownEvent]) {

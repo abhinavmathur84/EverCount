@@ -66,7 +66,7 @@ struct DaysieProvider: TimelineProvider {
 
     private func buildEntry() -> DaysieEntry {
         var events: [WidgetEvent] = []
-        if let defaults = UserDefaults(suiteName: "group.com.daysie.app"),
+        if let defaults = UserDefaults(suiteName: "group.com.evercount.app"),
            let data = defaults.data(forKey: "shared_events"),
            let decoded = try? JSONDecoder().decode([WidgetEvent].self, from: data) {
             events = decoded
