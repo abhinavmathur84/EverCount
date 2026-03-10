@@ -7,7 +7,7 @@ class EventsViewModel: ObservableObject {
     @Published var sortAscending: Bool = true
     @Published var searchText: String = ""
 
-    func filteredAndSortedEvents(_ events: [CountdownEvent]) -> (upcoming: [CountdownEvent], past: [CountdownEvent]) {
+    func filteredAndSortedEvents(_ events: [CountdownEvent]) -> (upcoming: [CountdownEvent], past: [CountdownEvent], daysSince: [CountdownEvent]) {
         var filtered = events
 
         if let tag = selectedTag, !tag.isEmpty {
@@ -21,17 +21,23 @@ class EventsViewModel: ObservableObject {
             }
         }
 
-        let upcoming = filtered
+        let daysSince = filtered
+            .filter { $0.isDaysSince }
+            .sorted { $0.date > $1.date }
+
+        let countdownEvents = filtered.filter { !$0.isDaysSince }
+
+        let upcoming = countdownEvents
             .filter { !DateHelper.isPast(date: $0.date) }
             .sorted { a, b in
                 sortAscending ? a.date < b.date : a.date > b.date
             }
 
-        let past = filtered
+        let past = countdownEvents
             .filter { DateHelper.isPast(date: $0.date) }
             .sorted { $0.date > $1.date }
 
-        return (upcoming, past)
+        return (upcoming, past, daysSince)
     }
 
     func allTags(from events: [CountdownEvent]) -> [String] {

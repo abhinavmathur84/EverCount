@@ -17,6 +17,7 @@ struct AddEditEventView: View {
     @State private var workingDaysOnly: Bool = false
     @State private var remindOneDayBefore: Bool = false
     @State private var remindOneWeekBefore: Bool = false
+    @State private var isDaysSince: Bool = false
 
     let commonEmojis = [
         "📅", "🎂", "🎉", "💍", "✈️", "🎄",
@@ -26,7 +27,6 @@ struct AddEditEventView: View {
         "🎁", "🌺", "🐶", "🚀", "💻", "🎯"
     ]
 
-    // Curated color palette
     private let presetColors: [(hex: String, color: Color)] = [
         ("#FF6B6B", Color(hex: "#FF6B6B") ?? .red),
         ("#FF9F43", Color(hex: "#FF9F43") ?? .orange),
@@ -146,22 +146,31 @@ struct AddEditEventView: View {
 
                 // Options
                 Section {
-                    Picker("Repeat", selection: $repeatOption) {
-                        ForEach(RepeatOption.allCases, id: \.self) { option in
-                            Text(option.rawValue).tag(option)
+                    Toggle("Track Days Since", isOn: $isDaysSince)
+                    if !isDaysSince {
+                        Picker("Repeat", selection: $repeatOption) {
+                            ForEach(RepeatOption.allCases, id: \.self) { option in
+                                Text(option.rawValue).tag(option)
+                            }
                         }
+                        Toggle("Working Days Only", isOn: $workingDaysOnly)
                     }
-                    Toggle("Working Days Only", isOn: $workingDaysOnly)
                 } header: {
                     Text("Options")
+                } footer: {
+                    if isDaysSince {
+                        Text("Shows how many days have passed since this date.")
+                    }
                 }
 
-                // Reminders
-                Section {
-                    Toggle("1 Day Before", isOn: $remindOneDayBefore)
-                    Toggle("1 Week Before", isOn: $remindOneWeekBefore)
-                } header: {
-                    Text("Reminders")
+                // Reminders (hidden for days-since events)
+                if !isDaysSince {
+                    Section {
+                        Toggle("1 Day Before", isOn: $remindOneDayBefore)
+                        Toggle("1 Week Before", isOn: $remindOneWeekBefore)
+                    } header: {
+                        Text("Reminders")
+                    }
                 }
 
                 // Tags
@@ -211,12 +220,15 @@ struct AddEditEventView: View {
         workingDaysOnly = event.workingDaysOnly
         remindOneDayBefore = event.reminderOptions.contains(.oneDayBefore)
         remindOneWeekBefore = event.reminderOptions.contains(.oneWeekBefore)
+        isDaysSince = event.isDaysSince
     }
 
     private func saveEvent() {
         var reminderOptions: [ReminderOption] = []
-        if remindOneDayBefore { reminderOptions.append(.oneDayBefore) }
-        if remindOneWeekBefore { reminderOptions.append(.oneWeekBefore) }
+        if !isDaysSince {
+            if remindOneDayBefore { reminderOptions.append(.oneDayBefore) }
+            if remindOneWeekBefore { reminderOptions.append(.oneWeekBefore) }
+        }
 
         if !reminderOptions.isEmpty {
             NotificationHelper.requestPermission()
@@ -232,12 +244,13 @@ struct AddEditEventView: View {
             event.date = date
             event.emoji = selectedEmoji
             event.colorHex = selectedColorHex
-            event.repeatOption = repeatOption
+            event.repeatOption = isDaysSince ? .none : repeatOption
             event.notes = notes
             event.tags = tags
-            event.workingDaysOnly = workingDaysOnly
+            event.workingDaysOnly = isDaysSince ? false : workingDaysOnly
             event.reminderOptions = reminderOptions
-            NotificationHelper.scheduleNotifications(for: event)
+            event.isDaysSince = isDaysSince
+            if !isDaysSince { NotificationHelper.scheduleNotifications(for: event) }
         } else {
             let newEvent = CountdownEvent(
                 name: name,
@@ -246,12 +259,13 @@ struct AddEditEventView: View {
                 colorHex: selectedColorHex,
                 notes: notes,
                 tags: tags,
-                repeatOption: repeatOption,
-                workingDaysOnly: workingDaysOnly,
-                reminderOptions: reminderOptions
+                repeatOption: isDaysSince ? .none : repeatOption,
+                workingDaysOnly: isDaysSince ? false : workingDaysOnly,
+                reminderOptions: reminderOptions,
+                isDaysSince: isDaysSince
             )
             modelContext.insert(newEvent)
-            NotificationHelper.scheduleNotifications(for: newEvent)
+            if !isDaysSince { NotificationHelper.scheduleNotifications(for: newEvent) }
         }
 
         dismiss()

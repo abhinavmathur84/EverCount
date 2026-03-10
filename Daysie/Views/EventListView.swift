@@ -7,9 +7,8 @@ struct EventListView: View {
     @StateObject private var viewModel = EventsViewModel()
     @State private var showingAddEvent = false
     @State private var eventToEdit: CountdownEvent? = nil
-    @Environment(\.colorScheme) var colorScheme
 
-    private var groupedEvents: (upcoming: [CountdownEvent], past: [CountdownEvent]) {
+    private var groupedEvents: (upcoming: [CountdownEvent], past: [CountdownEvent], daysSince: [CountdownEvent]) {
         viewModel.filteredAndSortedEvents(allEvents)
     }
 
@@ -20,117 +19,15 @@ struct EventListView: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
-                    // Tag filter bar
-                    if !allTags.isEmpty {
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            HStack(spacing: 8) {
-                                FilterChip(
-                                    title: "All",
-                                    isSelected: viewModel.selectedTag == nil,
-                                    action: { viewModel.selectedTag = nil }
-                                )
-                                ForEach(allTags, id: \.self) { tag in
-                                    FilterChip(
-                                        title: tag,
-                                        isSelected: viewModel.selectedTag == tag,
-                                        action: {
-                                            viewModel.selectedTag = viewModel.selectedTag == tag ? nil : tag
-                                        }
-                                    )
-                                }
-                            }
-                            .padding(.horizontal, 16)
-                            .padding(.vertical, 10)
-                        }
-                    }
+                if !allTags.isEmpty {
+                    tagFilterBar
+                }
 
-                    List {
-                        // Upcoming events
-                        if !groupedEvents.upcoming.isEmpty {
-                            Section {
-                                ForEach(groupedEvents.upcoming) { event in
-                                    NavigationLink {
-                                        EventDetailView(event: event)
-                                    } label: {
-                                        EventCardView(event: event)
-                                    }
-                                    .listRowInsets(EdgeInsets(top: 6, leading: 16, bottom: 6, trailing: 16))
-                                    .listRowBackground(Color.clear)
-                                    .listRowSeparator(.hidden)
-                                    .swipeActions(edge: .trailing, allowsFullSwipe: true) {
-                                        Button(role: .destructive) {
-                                            deleteEvent(event)
-                                        } label: {
-                                            Label("Delete", systemImage: "trash")
-                                        }
-                                        Button {
-                                            eventToEdit = event
-                                        } label: {
-                                            Label("Edit", systemImage: "pencil")
-                                        }
-                                        .tint(.orange)
-                                    }
-                                }
-                                .transition(.asymmetric(insertion: .slide, removal: .opacity))
-                            }
-                        }
+                eventList
 
-                        // Past events
-                        if !groupedEvents.past.isEmpty {
-                            Section {
-                                HStack {
-                                    Text("PAST")
-                                        .font(.system(.caption, design: .rounded, weight: .semibold))
-                                        .foregroundStyle(.secondary)
-                                        .tracking(1.5)
-                                    Spacer()
-                                }
-                                .listRowInsets(EdgeInsets(top: 16, leading: 20, bottom: 0, trailing: 16))
-                                .listRowBackground(Color.clear)
-                                .listRowSeparator(.hidden)
-
-                                ForEach(groupedEvents.past) { event in
-                                    NavigationLink {
-                                        EventDetailView(event: event)
-                                    } label: {
-                                        EventCardView(event: event)
-                                            .opacity(0.62)
-                                    }
-                                    .listRowInsets(EdgeInsets(top: 6, leading: 16, bottom: 6, trailing: 16))
-                                    .listRowBackground(Color.clear)
-                                    .listRowSeparator(.hidden)
-                                    .swipeActions(edge: .trailing, allowsFullSwipe: true) {
-                                        Button(role: .destructive) {
-                                            deleteEvent(event)
-                                        } label: {
-                                            Label("Delete", systemImage: "trash")
-                                        }
-                                        Button {
-                                            eventToEdit = event
-                                        } label: {
-                                            Label("Edit", systemImage: "pencil")
-                                        }
-                                        .tint(.orange)
-                                    }
-                                }
-                                .transition(.asymmetric(insertion: .slide, removal: .opacity))
-                            }
-                        }
-
-                        if groupedEvents.upcoming.isEmpty && groupedEvents.past.isEmpty {
-                            ContentUnavailableView(
-                                "No Events Yet",
-                                systemImage: "calendar.badge.plus",
-                                description: Text("Tap + to create your first countdown")
-                            )
-                            .listRowBackground(Color.clear)
-                            .listRowSeparator(.hidden)
-                        }
-                    }
-                    .listStyle(.plain)
-                    .scrollContentBackground(.hidden)
-                    .animation(.easeInOut, value: allEvents.count)
-
+                BannerAdView(adUnitID: "ca-app-pub-3940256099942544/2934735716")
+                    .frame(height: 50)
+                    .background(Color(.secondarySystemGroupedBackground))
             }
             .navigationTitle("Daysie")
             .navigationBarTitleDisplayMode(.large)
@@ -162,6 +59,159 @@ struct EventListView: View {
             }
             .searchable(text: $viewModel.searchText, prompt: "Search events")
         }
+        .onChange(of: allEvents.count) {
+            AppGroupHelper.saveEvents(allEvents)
+        }
+    }
+
+    private var tagFilterBar: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: 8) {
+                FilterChip(
+                    title: "All",
+                    isSelected: viewModel.selectedTag == nil,
+                    action: { viewModel.selectedTag = nil }
+                )
+                ForEach(allTags, id: \.self) { tag in
+                    FilterChip(
+                        title: tag,
+                        isSelected: viewModel.selectedTag == tag,
+                        action: {
+                            viewModel.selectedTag = viewModel.selectedTag == tag ? nil : tag
+                        }
+                    )
+                }
+            }
+            .padding(.horizontal, 16)
+            .padding(.vertical, 10)
+        }
+    }
+
+    private var eventList: some View {
+        List {
+            upcomingSection
+            daysSinceSection
+            pastSection
+            emptyState
+        }
+        .listStyle(.plain)
+        .scrollContentBackground(.hidden)
+        .animation(.easeInOut, value: allEvents.count)
+    }
+
+    @ViewBuilder
+    private var upcomingSection: some View {
+        if !groupedEvents.upcoming.isEmpty {
+            Section {
+                ForEach(groupedEvents.upcoming) { event in
+                    NavigationLink {
+                        EventDetailView(event: event)
+                    } label: {
+                        EventCardView(event: event)
+                    }
+                    .listRowInsets(EdgeInsets(top: 6, leading: 16, bottom: 6, trailing: 16))
+                    .listRowBackground(Color.clear)
+                    .listRowSeparator(.hidden)
+                    .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                        deleteButton(for: event)
+                        editButton(for: event)
+                    }
+                }
+                .transition(.asymmetric(insertion: .slide, removal: .opacity))
+            }
+        }
+    }
+
+    @ViewBuilder
+    private var daysSinceSection: some View {
+        if !groupedEvents.daysSince.isEmpty {
+            Section {
+                sectionHeader("DAYS SINCE")
+                ForEach(groupedEvents.daysSince) { event in
+                    NavigationLink {
+                        EventDetailView(event: event)
+                    } label: {
+                        EventCardView(event: event)
+                    }
+                    .listRowInsets(EdgeInsets(top: 6, leading: 16, bottom: 6, trailing: 16))
+                    .listRowBackground(Color.clear)
+                    .listRowSeparator(.hidden)
+                    .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                        deleteButton(for: event)
+                        editButton(for: event)
+                    }
+                }
+                .transition(.asymmetric(insertion: .slide, removal: .opacity))
+            }
+        }
+    }
+
+    @ViewBuilder
+    private var pastSection: some View {
+        if !groupedEvents.past.isEmpty {
+            Section {
+                sectionHeader("PAST")
+                ForEach(groupedEvents.past) { event in
+                    NavigationLink {
+                        EventDetailView(event: event)
+                    } label: {
+                        EventCardView(event: event)
+                            .opacity(0.62)
+                    }
+                    .listRowInsets(EdgeInsets(top: 6, leading: 16, bottom: 6, trailing: 16))
+                    .listRowBackground(Color.clear)
+                    .listRowSeparator(.hidden)
+                    .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                        deleteButton(for: event)
+                        editButton(for: event)
+                    }
+                }
+                .transition(.asymmetric(insertion: .slide, removal: .opacity))
+            }
+        }
+    }
+
+    @ViewBuilder
+    private var emptyState: some View {
+        if groupedEvents.upcoming.isEmpty && groupedEvents.past.isEmpty && groupedEvents.daysSince.isEmpty {
+            ContentUnavailableView(
+                "No Events Yet",
+                systemImage: "calendar.badge.plus",
+                description: Text("Tap + to create your first countdown")
+            )
+            .listRowBackground(Color.clear)
+            .listRowSeparator(.hidden)
+        }
+    }
+
+    private func sectionHeader(_ title: String) -> some View {
+        HStack {
+            Text(title)
+                .font(.system(.caption, design: .rounded, weight: .semibold))
+                .foregroundStyle(.secondary)
+                .tracking(1.5)
+            Spacer()
+        }
+        .listRowInsets(EdgeInsets(top: 16, leading: 20, bottom: 0, trailing: 16))
+        .listRowBackground(Color.clear)
+        .listRowSeparator(.hidden)
+    }
+
+    private func deleteButton(for event: CountdownEvent) -> some View {
+        Button(role: .destructive) {
+            deleteEvent(event)
+        } label: {
+            Label("Delete", systemImage: "trash")
+        }
+    }
+
+    private func editButton(for event: CountdownEvent) -> some View {
+        Button {
+            eventToEdit = event
+        } label: {
+            Label("Edit", systemImage: "pencil")
+        }
+        .tint(.orange)
     }
 
     private func deleteEvent(_ event: CountdownEvent) {

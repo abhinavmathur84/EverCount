@@ -4,6 +4,10 @@ struct EventCardView: View {
     let event: CountdownEvent
     @Environment(\.colorScheme) var colorScheme
 
+    private var daysValue: Int {
+        abs(DateHelper.daysRemaining(to: event.date, workingDaysOnly: event.workingDaysOnly))
+    }
+
     private var daysRemaining: Int {
         DateHelper.daysRemaining(to: event.date, workingDaysOnly: event.workingDaysOnly)
     }
@@ -13,7 +17,13 @@ struct EventCardView: View {
     }
 
     private var isUrgent: Bool {
-        !isPast && daysRemaining <= 7
+        !event.isDaysSince && !isPast && daysRemaining <= 7
+    }
+
+    private var counterLabel: String {
+        if event.isDaysSince { return "days\nsince" }
+        if daysRemaining == 0 { return "" }
+        return isPast ? "days\nago" : "days\nleft"
     }
 
     var body: some View {
@@ -57,17 +67,17 @@ struct EventCardView: View {
 
             // Days counter panel
             VStack(spacing: 2) {
-                if daysRemaining == 0 {
+                if !event.isDaysSince && daysRemaining == 0 {
                     Text("Today")
                         .font(.system(.callout, design: .rounded, weight: .black))
                         .foregroundStyle(.white)
                 } else {
-                    Text("\(abs(daysRemaining))")
+                    Text("\(daysValue)")
                         .font(.system(size: 34, weight: .black, design: .rounded))
                         .foregroundStyle(.white)
                         .monospacedDigit()
                         .minimumScaleFactor(0.5)
-                    Text(isPast ? "days\nago" : "days\nleft")
+                    Text(counterLabel)
                         .font(.system(size: 10, weight: .semibold, design: .rounded))
                         .foregroundStyle(.white.opacity(0.82))
                         .multilineTextAlignment(.center)

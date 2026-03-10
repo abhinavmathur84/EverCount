@@ -35,5 +35,20 @@
     <array>
         <string>fetch</string>
     </array>
+    <key>GADApplicationIdentifier</key>
+    <string>ca-app-pub-3940256099942544~1458002511</string>
+    <key>NSUserTrackingUsageDescription</key>
+    <string>Daysie uses this identifier to show you relevant ads to keep the app free.</string>
+    <key>SKAdNetworkItems</key>
+    <array>
+        <dict>
+            <key>SKAdNetworkIdentifier</key>
+            <string>cstr6suwn9.skadnetwork</string>
+        </dict>
+        <dict>
+            <key>SKAdNetworkIdentifier</key>
+            <string>4fzdc2evr5.skadnetwork</string>
+        </dict>
+    </array>
 </dict>
 </plist>

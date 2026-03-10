@@ -28,6 +28,7 @@ final class CountdownEvent {
     var workingDaysOnly: Bool
     var reminderOptionsRaw: [String]
     var createdAt: Date
+    var isDaysSince: Bool
 
     var repeatOption: RepeatOption {
         get { RepeatOption(rawValue: repeatOptionRaw) ?? .none }
@@ -54,7 +55,8 @@ final class CountdownEvent {
         repeatOption: RepeatOption = .none,
         workingDaysOnly: Bool = false,
         reminderOptions: [ReminderOption] = [],
-        createdAt: Date = Date()
+        createdAt: Date = Date(),
+        isDaysSince: Bool = false
     ) {
         self.id = id
         self.name = name
@@ -67,6 +69,7 @@ final class CountdownEvent {
         self.workingDaysOnly = workingDaysOnly
         self.reminderOptionsRaw = reminderOptions.map { $0.rawValue }
         self.createdAt = createdAt
+        self.isDaysSince = isDaysSince
     }
 }
 

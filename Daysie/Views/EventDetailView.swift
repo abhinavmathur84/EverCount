@@ -43,7 +43,7 @@ struct EventDetailView: View {
                             .foregroundStyle(.white)
                             .monospacedDigit()
 
-                        Text(daysRemaining == 0 ? "Today!" : (isPast ? "days ago" : "days left"))
+                        Text(event.isDaysSince ? "days since" : (daysRemaining == 0 ? "Today!" : (isPast ? "days ago" : "days left")))
                             .font(.system(.callout, design: .rounded, weight: .semibold))
                             .foregroundStyle(.white.opacity(0.88))
                             .textCase(.uppercase)
@@ -69,7 +69,7 @@ struct EventDetailView: View {
 
                 // Live countdown
                 VStack(alignment: .leading, spacing: 12) {
-                    Label(isPast ? "Time Since" : "Live Countdown", systemImage: "timer")
+                    Label(event.isDaysSince || isPast ? "Time Since" : "Live Countdown", systemImage: "timer")
                         .font(.system(.footnote, design: .rounded, weight: .semibold))
                         .foregroundStyle(.secondary)
                         .textCase(.uppercase)

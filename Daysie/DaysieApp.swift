@@ -1,14 +1,18 @@
 import SwiftUI
 import SwiftData
+import GoogleMobileAds
 
 @main
 struct DaysieApp: App {
+    init() {
+        GADMobileAds.sharedInstance().start(completionHandler: nil)
+    }
+
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([CountdownEvent.self])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
         do {
             let container = try ModelContainer(for: schema, configurations: [modelConfiguration])
-            // Pre-populate with sample events on first launch
             let context = container.mainContext
             let fetchDescriptor = FetchDescriptor<CountdownEvent>()
             let existingEvents = try context.fetch(fetchDescriptor)
@@ -70,6 +74,18 @@ struct DaysieApp: App {
                         repeatOption: .yearly,
                         workingDaysOnly: false,
                         reminderOptions: []
+                    ),
+                    CountdownEvent(
+                        name: "First Day at Work",
+                        date: calendar.date(byAdding: .day, value: -120, to: now) ?? now,
+                        emoji: "💼",
+                        colorHex: "#00B894",
+                        notes: "Started the new journey",
+                        tags: ["work"],
+                        repeatOption: .none,
+                        workingDaysOnly: false,
+                        reminderOptions: [],
+                        isDaysSince: true
                     )
                 ]
                 for event in sampleEvents {

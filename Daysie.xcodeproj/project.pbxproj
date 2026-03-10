@@ -3,35 +3,71 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 63;
+	objectVersion = 77;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AA11BB22CC33DD44EE55FF66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA11BB22CC33DD44EE551234 /* Assets.xcassets */; };
+		09CCE7E2177368FB904D693B /* BannerAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9922FC33CF8F3D036A855431 /* BannerAdView.swift */; };
 		0C80FA060484DCD50B491456 /* EventCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14652686EB4FCE95B1C8C3A1 /* EventCardView.swift */; };
+		3BC57F555B7E7646B7E25AD1 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = A1B9D06FFCA6914E1C1548B0 /* GoogleMobileAds */; };
 		5156452426C9F18FD4A51100 /* NotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A8B0446FFAB1F29AD821B3 /* NotificationHelper.swift */; };
 		54868AEBC67DC36AD4421AC2 /* CountdownEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E9DAC322F4895B5E45E7E /* CountdownEvent.swift */; };
+		54A28FEE19D40B5D295D76B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AF51B7410EB2A934F82BE97 /* Assets.xcassets */; };
+		5781884707FB579CBE6ABEDA /* AppGroupHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65466FAB77B6B02A3BD04CA7 /* AppGroupHelper.swift */; };
+		6188172F0E6BD5FD4485F460 /* DaysieWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36BB13C2D0F41E6F4724F03 /* DaysieWidget.swift */; };
 		66742E7F4A2ABAACEB5B645A /* EventDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38B0BC046CBF3D7B77B53C1 /* EventDetailView.swift */; };
 		6A1E092F50E488BF70223EDE /* EventListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5268E1B6113EE1D6CEB68B00 /* EventListView.swift */; };
 		6EC4E74F1F52C3182BFDB125 /* DaysieApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE202D569FB05607A627521 /* DaysieApp.swift */; };
 		9816BF551872167B99332EA6 /* EventsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B68B680372E8779A237265 /* EventsViewModel.swift */; };
 		B6045D1D4091CE0112485AD2 /* AddEditEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D41C6567EF602A91F628B9 /* AddEditEventView.swift */; };
 		B7B87C0B415D2E7C1405B631 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D41731F5A5819235408BF1 /* DateHelper.swift */; };
+		D55456BEB23917CC99FF1B3F /* DaysieWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = AE5498268BA228941E628790 /* DaysieWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		066E87B8538F984586FD7717 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F40171659EB764519190BF84 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 32425826B91D08D4B6C05618;
+			remoteInfo = DaysieWidget;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7418033A2FDB6DF146AC096D /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				D55456BEB23917CC99FF1B3F /* DaysieWidget.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		AA11BB22CC33DD44EE551234 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0AF51B7410EB2A934F82BE97 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		14652686EB4FCE95B1C8C3A1 /* EventCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCardView.swift; sourceTree = "<group>"; };
 		3E5FA11578B78690E47369C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		44D41731F5A5819235408BF1 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		5268E1B6113EE1D6CEB68B00 /* EventListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListView.swift; sourceTree = "<group>"; };
 		53A8B0446FFAB1F29AD821B3 /* NotificationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHelper.swift; sourceTree = "<group>"; };
-		778D35D7BCF042ACB3F2C2E4 /* Daysie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Daysie.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		65466FAB77B6B02A3BD04CA7 /* AppGroupHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroupHelper.swift; sourceTree = "<group>"; };
+		778D35D7BCF042ACB3F2C2E4 /* Daysie.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Daysie.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9922FC33CF8F3D036A855431 /* BannerAdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerAdView.swift; sourceTree = "<group>"; };
+		A36BB13C2D0F41E6F4724F03 /* DaysieWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysieWidget.swift; sourceTree = "<group>"; };
+		A76994A9C0FF01450A7D7130 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		AE5498268BA228941E628790 /* DaysieWidget.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = DaysieWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEE202D569FB05607A627521 /* DaysieApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysieApp.swift; sourceTree = "<group>"; };
 		B38B0BC046CBF3D7B77B53C1 /* EventDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailView.swift; sourceTree = "<group>"; };
 		C9D41C6567EF602A91F628B9 /* AddEditEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditEventView.swift; sourceTree = "<group>"; };
 		CE4E9DAC322F4895B5E45E7E /* CountdownEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownEvent.swift; sourceTree = "<group>"; };
+		DC83EDD17B50919768A2AB1F /* DaysieWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DaysieWidget.entitlements; sourceTree = "<group>"; };
 		E5B68B680372E8779A237265 /* EventsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewModel.swift; sourceTree = "<group>"; };
+		FB66A8B666FAF2F168E4C6D3 /* Daysie.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Daysie.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,26 +75,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BC57F555B7E7646B7E25AD1 /* GoogleMobileAds in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
-/* Begin PBXResourcesBuildPhase section */
-		AA11BB22CC33DD44EE55AAAA /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AA11BB22CC33DD44EE55FF66 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
 /* Begin PBXGroup section */
 		04E5162FC6E719DDDB1B4D75 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				65466FAB77B6B02A3BD04CA7 /* AppGroupHelper.swift */,
 				44D41731F5A5819235408BF1 /* DateHelper.swift */,
 				53A8B0446FFAB1F29AD821B3 /* NotificationHelper.swift */,
 			);
@@ -77,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				C9D41C6567EF602A91F628B9 /* AddEditEventView.swift */,
+				9922FC33CF8F3D036A855431 /* BannerAdView.swift */,
 				14652686EB4FCE95B1C8C3A1 /* EventCardView.swift */,
 				B38B0BC046CBF3D7B77B53C1 /* EventDetailView.swift */,
 				5268E1B6113EE1D6CEB68B00 /* EventListView.swift */,
@@ -92,12 +120,23 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		AE837A46115410D105EAB036 /* DaysieWidget */ = {
+			isa = PBXGroup;
+			children = (
+				DC83EDD17B50919768A2AB1F /* DaysieWidget.entitlements */,
+				A36BB13C2D0F41E6F4724F03 /* DaysieWidget.swift */,
+				A76994A9C0FF01450A7D7130 /* Info.plist */,
+			);
+			path = DaysieWidget;
+			sourceTree = "<group>";
+		};
 		D1C79F7C5110306E556FE116 /* Daysie */ = {
 			isa = PBXGroup;
 			children = (
+				0AF51B7410EB2A934F82BE97 /* Assets.xcassets */,
+				FB66A8B666FAF2F168E4C6D3 /* Daysie.entitlements */,
 				AEE202D569FB05607A627521 /* DaysieApp.swift */,
 				3E5FA11578B78690E47369C7 /* Info.plist */,
-				AA11BB22CC33DD44EE551234 /* Assets.xcassets */,
 				04E5162FC6E719DDDB1B4D75 /* Helpers */,
 				99B7C332A6E53EBCF530E455 /* Models */,
 				276C03272A59A7D4C4B31F82 /* ViewModels */,
@@ -110,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				778D35D7BCF042ACB3F2C2E4 /* Daysie.app */,
+				AE5498268BA228941E628790 /* DaysieWidget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -118,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				D1C79F7C5110306E556FE116 /* Daysie */,
+				AE837A46115410D105EAB036 /* DaysieWidget */,
 				E9B9A375DE1CA70AB512D828 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -125,20 +166,40 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A10821B8842AD6ABCED542F9 /* Daysie */ = {
+		32425826B91D08D4B6C05618 /* DaysieWidget */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A4758A0DE9BAA71425FF7D27 /* Build configuration list for PBXNativeTarget "Daysie" */;
+			buildConfigurationList = 24EA7E9ECBF86D23C38B14CF /* Build configuration list for PBXNativeTarget "DaysieWidget" */;
 			buildPhases = (
-				AA11BB22CC33DD44EE55AAAA /* Resources */,
-				C4961E54809A37EAD2B17727 /* Sources */,
-				DB46C5F398334D090706974F /* Frameworks */,
+				21E93BF6E53EA4CA451D1008 /* Sources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
+			name = DaysieWidget;
+			packageProductDependencies = (
+			);
+			productName = DaysieWidget;
+			productReference = AE5498268BA228941E628790 /* DaysieWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		A10821B8842AD6ABCED542F9 /* Daysie */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A4758A0DE9BAA71425FF7D27 /* Build configuration list for PBXNativeTarget "Daysie" */;
+			buildPhases = (
+				C4961E54809A37EAD2B17727 /* Sources */,
+				39F57C7AE07C2EE6AE744E98 /* Resources */,
+				DB46C5F398334D090706974F /* Frameworks */,
+				7418033A2FDB6DF146AC096D /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DEF779B93611364344FE3712 /* PBXTargetDependency */,
+			);
 			name = Daysie;
 			packageProductDependencies = (
+				A1B9D06FFCA6914E1C1548B0 /* GoogleMobileAds */,
 			);
 			productName = Daysie;
 			productReference = 778D35D7BCF042ACB3F2C2E4 /* Daysie.app */;
@@ -153,7 +214,12 @@
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
-						A10821B8842AD6ABCED542F9 = {
+					32425826B91D08D4B6C05618 = {
+						DevelopmentTeam = LT86UVZAL7;
+						ProvisioningStyle = Automatic;
+					};
+					A10821B8842AD6ABCED542F9 = {
+						DevelopmentTeam = LT86UVZAL7;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -168,20 +234,46 @@
 			);
 			mainGroup = F27E5E83956D8970096D6BA0;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				E3CFF0CBB6EDB58B1FD0FACE /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
+			);
+			preferredProjectObjectVersion = 77;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				A10821B8842AD6ABCED542F9 /* Daysie */,
+				32425826B91D08D4B6C05618 /* DaysieWidget */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		39F57C7AE07C2EE6AE744E98 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				54A28FEE19D40B5D295D76B4 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		21E93BF6E53EA4CA451D1008 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6188172F0E6BD5FD4485F460 /* DaysieWidget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C4961E54809A37EAD2B17727 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				B6045D1D4091CE0112485AD2 /* AddEditEventView.swift in Sources */,
+				5781884707FB579CBE6ABEDA /* AppGroupHelper.swift in Sources */,
+				09CCE7E2177368FB904D693B /* BannerAdView.swift in Sources */,
 				54868AEBC67DC36AD4421AC2 /* CountdownEvent.swift in Sources */,
 				B7B87C0B415D2E7C1405B631 /* DateHelper.swift in Sources */,
 				6EC4E74F1F52C3182BFDB125 /* DaysieApp.swift in Sources */,
@@ -194,6 +286,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DEF779B93611364344FE3712 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 32425826B91D08D4B6C05618 /* DaysieWidget */;
+			targetProxy = 066E87B8538F984586FD7717 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		4343C940C53B3472DB01B9F4 /* Release */ = {
@@ -252,14 +352,37 @@
 			};
 			name = Release;
 		};
+		459D2ED0ED90718734506B0E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = DaysieWidget/DaysieWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = LT86UVZAL7;
+				INFOPLIST_FILE = DaysieWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.daysie.app.widget;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		4FEF419AC2D8D7EEE6A5A31A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Daysie/Daysie.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 38MNL72G33;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = LT86UVZAL7;
 				INFOPLIST_FILE = Daysie/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -337,14 +460,37 @@
 			};
 			name = Debug;
 		};
+		8421813393E7226706912029 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = DaysieWidget/DaysieWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = LT86UVZAL7;
+				INFOPLIST_FILE = DaysieWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.daysie.app.widget;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
 		E69C14EB3EF8A48CED3BEBFB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Daysie/Daysie.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 38MNL72G33;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = LT86UVZAL7;
 				INFOPLIST_FILE = Daysie/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -371,6 +517,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
+		24EA7E9ECBF86D23C38B14CF /* Build configuration list for PBXNativeTarget "DaysieWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8421813393E7226706912029 /* Debug */,
+				459D2ED0ED90718734506B0E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
 		A4758A0DE9BAA71425FF7D27 /* Build configuration list for PBXNativeTarget "Daysie" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -382,7 +537,24 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		E3CFF0CBB6EDB58B1FD0FACE /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 
+/* Begin XCSwiftPackageProductDependency section */
+		A1B9D06FFCA6914E1C1548B0 /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E3CFF0CBB6EDB58B1FD0FACE /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
+			productName = GoogleMobileAds;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F40171659EB764519190BF84 /* Project object */;
 }
