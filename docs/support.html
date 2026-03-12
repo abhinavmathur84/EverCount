@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EverCount – Support</title>
+  <style>
+    :root {
+      --accent: #4B3BD4;
+      --accent-light: #ede9ff;
+      --text: #1a1a2e;
+      --muted: #6b7280;
+      --bg: #f9f8ff;
+      --card: #ffffff;
+      --border: #e5e7eb;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --accent: #7c6ef5;
+        --accent-light: #1e1a3a;
+        --text: #f0eeff;
+        --muted: #9ca3af;
+        --bg: #0f0e1a;
+        --card: #1a1830;
+        --border: #2d2b45;
+      }
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    header {
+      background: var(--accent);
+      padding: 48px 24px 40px;
+      text-align: center;
+    }
+    header .icon {
+      font-size: 56px;
+      display: block;
+      margin-bottom: 12px;
+    }
+    header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.5px;
+    }
+    header p {
+      color: rgba(255,255,255,0.78);
+      font-size: 1rem;
+      margin-top: 6px;
+    }
+    main {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+    }
+    h2 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin: 36px 0 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-size: 0.78rem;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px 22px;
+      margin-bottom: 12px;
+    }
+    .card h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .card p, .card li {
+      font-size: 0.93rem;
+      color: var(--muted);
+    }
+    .card ul { padding-left: 18px; }
+    .card li { margin-bottom: 4px; }
+    .contact-btn {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 12px 28px;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 100px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    .contact-btn:hover { opacity: 0.88; }
+    footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 0.8rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<header>
+  <span class="icon">∞</span>
+  <h1>EverCount</h1>
+  <p>Countdowns &amp; Days Since Tracker</p>
+</header>
+
+<main>
+
+  <h2>Frequently Asked Questions</h2>
+
+  <div class="card">
+    <h3>How do I create a countdown?</h3>
+    <p>Tap the <strong>+</strong> button in the top-right corner of the main screen. Make sure the segmented control at the top of the form shows <strong>⏳ Countdown</strong>, then fill in a name, pick a date, choose an emoji and colour, and tap Save.</p>
+  </div>
+
+  <div class="card">
+    <h3>What is "Days Since"?</h3>
+    <p>Days Since tracks how many days have passed since a meaningful date — a sobriety milestone, a first day at work, a wedding, or any personal record. When creating an event, switch the toggle at the top of the form to <strong>📆 Days Since</strong>. The counter grows every day.</p>
+  </div>
+
+  <div class="card">
+    <h3>How do I add the widget to my Home Screen?</h3>
+    <p>Long-press your Home Screen → tap <strong>+</strong> in the top-left → search <strong>EverCount</strong> → choose Small (next event) or Medium (top 3 events) → tap Add Widget. The widget updates automatically when you save or edit events in the app.</p>
+  </div>
+
+  <div class="card">
+    <h3>My widget is not updating — what should I do?</h3>
+    <ul>
+      <li>Open EverCount at least once after adding or editing an event — this triggers a widget refresh.</li>
+      <li>If still stale, long-press the widget → Edit Widget, then exit. iOS will force a timeline reload.</li>
+      <li>As a last resort, remove and re-add the widget.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Can I set reminders for an event?</h3>
+    <p>Yes. When creating or editing a Countdown event, scroll to the <strong>Reminders</strong> section and enable <em>1 Day Before</em> or <em>1 Week Before</em>. EverCount will ask for notification permission the first time. Days Since events do not support reminders.</p>
+  </div>
+
+  <div class="card">
+    <h3>What does "Working Days Only" mean?</h3>
+    <p>When enabled, the countdown skips weekends (Saturday and Sunday) and counts only Monday–Friday. Useful for work deadlines and project milestones.</p>
+  </div>
+
+  <div class="card">
+    <h3>How do I delete an event?</h3>
+    <p>Swipe left on any event card in the main list and tap <strong>Delete</strong>.</p>
+  </div>
+
+  <div class="card">
+    <h3>I deleted all my events and they came back — is that a bug?</h3>
+    <p>This was fixed in version 1.0. If you are seeing sample events reappear after deleting them, please update to the latest version from the App Store.</p>
+  </div>
+
+  <div class="card">
+    <h3>Does EverCount collect any personal data?</h3>
+    <p>No. All data (event names, dates, notes) is stored locally on your device and never sent to any server. See our <a href="privacy.html">Privacy Policy</a> for full details.</p>
+  </div>
+
+  <h2>Still need help?</h2>
+
+  <div class="card">
+    <h3>Contact Support</h3>
+    <p>We typically respond within 24 hours.</p>
+    <a class="contact-btn" href="mailto:abhinav@abhinavmathur.net?subject=EverCount%20Support">Email Support</a>
+  </div>
+
+</main>
+
+<footer>
+  <p>© 2026 Abhinav Mathur &nbsp;·&nbsp; <a href="privacy.html">Privacy Policy</a></p>
+</footer>
+
+</body>
+</html>
