@@ -15,8 +15,10 @@ struct DaysieApp: App {
             let container = try ModelContainer(for: schema, configurations: [modelConfiguration])
             let context = container.mainContext
             let fetchDescriptor = FetchDescriptor<CountdownEvent>()
+            let hasSeededBefore = UserDefaults.standard.bool(forKey: "hasSeededSampleEvents")
             let existingEvents = try context.fetch(fetchDescriptor)
-            if existingEvents.isEmpty {
+            if existingEvents.isEmpty && !hasSeededBefore {
+                UserDefaults.standard.set(true, forKey: "hasSeededSampleEvents")
                 let calendar = Calendar.current
                 let now = Date()
                 let sampleEvents = [
